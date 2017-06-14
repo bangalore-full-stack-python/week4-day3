@@ -1,0 +1,38 @@
+{% extends "structure.html" %}
+{% block twc %}
+<h4>Welcome to your account page</h4>
+<p>Add/Update your Personal Information below</p>
+<form action="/my_page.html" method="post">
+<fieldset>
+<legend>Personal Information</legend>
+    First Name: <input type="text" name="firstname" size="50" placeholder="First Name">
+    <br><br>
+    Last Name: <input type="text" name="lastname" size="50" placeholder="Last Name">
+    <br><br>
+    <div class="dob">
+    Date of Birth: 
+        <!-- <form action=""> -->
+            <input type="number" name="date" min="1" max="31" placeholder="Date">
+        <!-- </form> -->
+    </div>
+    <div class="dob">
+        <!-- <form action=""> -->
+            <input type="number" name="month" min="1" max="12" placeholder="Month">
+        <!-- </form> -->
+    </div>
+    <div class="dob">
+        <!-- <form action=""> -->
+            <input type="number" name="year" min="1950" max="2017" placeholder="Year">
+        <!-- </form> -->
+    </div>
+    <br><br><br>
+    <div class="phone">
+    Phone Number: <input type="text" name="phonenumber" size="20" placeholder="Phone Number">
+    <br><br>
+    Address: <textarea type="text" name="address" rows="7" cols="40" placeholder="Address"></textarea>
+    <br><br>
+    <input type="submit" value="Submit">
+    </div>
+</fieldset>
+</form>
+{% endblock %}
