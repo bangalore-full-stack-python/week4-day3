@@ -30,15 +30,14 @@ class Register(Form):
 def registration():
     form = Register(request.form)
     if request.method == 'POST':
-        if form.validate():
-            username = request.form['username']
-            password = request.form['password']
+        if form.validate() == True:
             flash('Thanks for registering')
             return redirect(url_for('show_account'))
         else:
             flash('All fields are required')
-            return redirect(url_for('registration'))
-    return render_template('registration.html', form=form)
+            return render_template('registration.html', form=form)
+    elif request.method == 'GET':
+        return render_template('registration.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
