@@ -31,6 +31,8 @@ def registration():
     form = Register(request.form)
     if request.method == 'POST':
         if form.validate() == True:
+            username = request.form['username']
+            password = request.form['password']
             flash('Thanks for registering')
             return redirect(url_for('show_account'))
         else:
