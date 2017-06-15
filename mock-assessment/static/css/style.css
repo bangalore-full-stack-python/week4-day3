@@ -1,9 +1,30 @@
-li {
-    color: #cc0066;
+ul {
+    list-style-type: none;
     font-size: 20px;
+    width: 80px;
+}
+ul li {
+    background: #ffccff;
+    padding: 10px;
+}
+a:link {
+    color: green;
+    text-decoration: none;
+}
+a:visited {
+    color: #cc3300;
+    text-decoration: none;
+}
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+a:active {
+    color: #55552b;
+    text-decoration: underline;
 }
 h1 {
-    color: green;
+    color: #009b77;
     text-decoration: line-through;
     text-align: center;
     font-size: 50px;
