@@ -49,9 +49,12 @@ def login():
             return redirect(url_for('show_account'))
     return render_template('login.html', error=error)
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 def show_account():
-    return render_template('account.html')
+    if request.method == 'POST':
+        return render_template('my_page.html')
+    elif request.method == 'GET':
+        return render_template('account.html')
 
 @app.route('/my_page')
 def my_page():
