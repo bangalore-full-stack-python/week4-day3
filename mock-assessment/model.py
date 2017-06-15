@@ -3,47 +3,61 @@
 #import schema
 import sqlite3
 
-def insert_account(fname, lname, dob, phone_num, address):
+# def insert_account(fname, lname, dob, phone_num, address):
+#     connection = sqlite3.connect('info.db')
+#     cursor = connection.cursor()
+#     cursor.execute(
+#         '''INSERT INTO account(
+#             fname,
+#             lname,
+#             dob,
+#             phone_num,
+#             address
+#         )VALUES(%s, %s, %s, %s, %s);''',
+#         (fname, lname, dob, phone_num, address)
+#     )
+#     connection.commit()
+#     connection.close()
+
+def read_fname_by_last_name(something):
     connection = sqlite3.connect('info.db')
     cursor = connection.cursor()
-    cursor.execute(
-        '''INSERT INTO account(
-            fname,
-            lname,
-            dob,
-            phone_num,
-            address
-        )VALUES(%s, %s, %s, %s, %s);''',
-        (fname, lname, dob, phone_num, address)
-    )
-    connection.commit()
-    connection.close()
+    cursor.execute('SELECT fname FROM account WHERE lname="{}"'.format(something))
+    z = cursor.fetchall()[0][0]
+    print(z)
 
-def select_account(params=()):
+def read_lname_by_first_name(something):
     connection = sqlite3.connect('info.db')
     cursor = connection.cursor()
-    if params==():
-        cursor.execute("select * from account")
-    else:
-        string = "select"
-        for i in xrange(len(params)-1):
-            string += "%s,"
-        string += "%s"
-        string += " from account"
-        result = cursor.execute(string)
-        connection.close()
-        return result.fetchall()
+    cursor.execute('SELECT lname FROM account WHERE fname="{}"'.format(something))
+    z = cursor.fetchall()[0][0]
+    print(z)
 
-#def get_dob(fname):
-#    dob = cursor.execute('SELECT dob FROM account WHERE fname="{}"'.format(fname))
-#    dob2 = dob.fetchall()
+def read_dob_by_first_name(something):
+    connection = sqlite3.connect('info.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT dob FROM account WHERE fname="{}"'.format(something))
+    z = cursor.fetchall()[0][0]
+    print(z)
 
-#    connection.commit()
-#    cursor.close()
-#    connection.close()
+def read_ph_num_by_first_name(something):
+    connection = sqlite3.connect('info.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT phone_num FROM account WHERE fname="{}"'.format(something))
+    z = cursor.fetchall()[0][0]
+    print(z)
 
-#if __name__ == '__main__':
-#    x = get_dob('Narendra')
-#    print(x)
+def read_address_by_first_name(something):
+    connection = sqlite3.connect('info.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT address FROM account WHERE fname="{}"'.format(something))
+    z = cursor.fetchall()[0][0]
+    print(z)
 
 
+if __name__ == '__main__':
+    read_fname_by_last_name('Modi')
+    read_lname_by_first_name('Narendra')
+    read_dob_by_first_name('Narendra')
+    read_ph_num_by_first_name('Narendra')
+    read_address_by_first_name('Narendra')
